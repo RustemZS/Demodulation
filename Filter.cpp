@@ -8,10 +8,10 @@ std::vector<float> Filter::filter(const std::vector<float>& inSignal)
 
 	if (Input::isType())
 	{
-		// Нерекурсивный фильтр
-		// window - Количество отсчетов интервала усреднения
-		std::cout << "Работает нерекурсивный фильтр" << std::endl;
-		float sumx = 0; // Сумма отсчетов на интервале
+		// РќРµСЂРµРєСѓСЂСЃРёРІРЅС‹Р№ С„РёР»СЊС‚СЂ
+		// window - РљРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚СЃС‡РµС‚РѕРІ РёРЅС‚РµСЂРІР°Р»Р° СѓСЃСЂРµРґРЅРµРЅРёСЏ
+		std::cout << "Р Р°Р±РѕС‚Р°РµС‚ РЅРµСЂРµРєСѓСЂСЃРёРІРЅС‹Р№ С„РёР»СЊС‚СЂ" << std::endl;
+		float sumx = 0; // РЎСѓРјРјР° РѕС‚СЃС‡РµС‚РѕРІ РЅР° РёРЅС‚РµСЂРІР°Р»Рµ
 		for (uint32_t i = 0; i < FileManager::getSize() / 2; ++i) {
 			uint32_t j = 0;
 			while (i >= j)
@@ -30,12 +30,12 @@ std::vector<float> Filter::filter(const std::vector<float>& inSignal)
 	}
 	else
 	{
-		// Рекурсивный фильтр
-		// window - Количество отсчетов интервала усреднения
-		std::cout << "Работает рекурсивный фильтр" << std::endl;
-		float sumx = 0; // Сумма отсчетов на интервале
-		float* mas; // Массив для хранения window отсчетов
-		uint32_t index = 0; // Индекс элемента массива
+		// Р РµРєСѓСЂСЃРёРІРЅС‹Р№ С„РёР»СЊС‚СЂ
+		// window - РљРѕР»РёС‡РµСЃС‚РІРѕ РѕС‚СЃС‡РµС‚РѕРІ РёРЅС‚РµСЂРІР°Р»Р° СѓСЃСЂРµРґРЅРµРЅРёСЏ
+		std::cout << "Р Р°Р±РѕС‚Р°РµС‚ СЂРµРєСѓСЂСЃРёРІРЅС‹Р№ С„РёР»СЊС‚СЂ" << std::endl;
+		float sumx = 0; // РЎСѓРјРјР° РѕС‚СЃС‡РµС‚РѕРІ РЅР° РёРЅС‚РµСЂРІР°Р»Рµ
+		float* mas; // РњР°СЃСЃРёРІ РґР»СЏ С…СЂР°РЅРµРЅРёСЏ window РѕС‚СЃС‡РµС‚РѕРІ
+		uint32_t index = 0; // РРЅРґРµРєСЃ СЌР»РµРјРµРЅС‚Р° РјР°СЃСЃРёРІР°
 		mas = new float[window];
 		for (uint32_t i = 0; i < window; ++i)
 			mas[i] = 0;
@@ -45,7 +45,7 @@ std::vector<float> Filter::filter(const std::vector<float>& inSignal)
 			sumx += mas[index];
 			index++;
 			if (index >= window)
-				index = 0; // Возврат к началу "окна"
+				index = 0; // Р’РѕР·РІСЂР°С‚ Рє РЅР°С‡Р°Р»Сѓ "РѕРєРЅР°"
 			outSignal[i] = sumx / window;
 		}
 		delete[] mas;
