@@ -22,20 +22,20 @@ std::vector<Complex<float>> FileManager::loadFile(const std::string& path)
 	file.open(path, std::ios::binary | std::ios::in);
 	if (!file.is_open())
 	{
-		std::cout << "Ôàéë íå îòêðûëñÿ" << std::endl;
+		std::cout << "Ð¤Ð°Ð¹Ð» Ð½Ðµ Ð¾Ñ‚ÐºÑ€Ñ‹Ð»ÑÑ" << std::endl;
 		exit(1);
 	}
 	else
 	{
-		std::cout << "Ôàéë îòêðûëñÿ" << std::endl;
+		std::cout << "Ð¤Ð°Ð¹Ð» Ð¾Ñ‚ÐºÑ€Ñ‹Ð»ÑÑ" << std::endl;
 
 		file.seekg(0, std::ios::end);
 		size = file.tellg() / 4;
 
-		std::cout << "×àñòîòà äèñêðåòèçàöèè: " << samplingFreq << std::endl;
-		std::cout << "Ìîäóëÿöèÿ: " << modulation << std::endl;
-		std::cout << "Ïàðàìåòð ïåðåäèñêðåòèçàöèè: " << parameterDown << std::endl;
-		std::cout << "Ðàçìåð ôàéëà: " << size << std::endl;
+		std::cout << "Ð§Ð°ÑÑ‚Ð¾Ñ‚Ð° Ð´Ð¸ÑÐºÑ€ÐµÑ‚Ð¸Ð·Ð°Ñ†Ð¸Ð¸: " << samplingFreq << std::endl;
+		std::cout << "ÐœÐ¾Ð´ÑƒÐ»ÑÑ†Ð¸Ñ: " << modulation << std::endl;
+		std::cout << "ÐŸÐ°Ñ€Ð°Ð¼ÐµÑ‚Ñ€ Ð¿ÐµÑ€ÐµÐ´Ð¸ÑÐºÑ€ÐµÑ‚Ð¸Ð·Ð°Ñ†Ð¸Ð¸: " << parameterDown << std::endl;
+		std::cout << "Ð Ð°Ð·Ð¼ÐµÑ€ Ñ„Ð°Ð¹Ð»Ð°: " << size << std::endl;
 
 		file.seekg(0, std::ios::beg);
 
@@ -66,7 +66,7 @@ std::vector<Complex<float>> FileManager::loadFile(const std::string& path)
 void FileManager::saveSignal(const std::string& wavFile, const std::vector<float>& signal)
 {
 	Timer timer;
-	std::cout << "Çàïèñü wav ôàéëà" << std::endl;
+	std::cout << "Ð—Ð°Ð¿Ð¸ÑÑŒ wav Ñ„Ð°Ð¹Ð»Ð°" << std::endl;
 	static_assert(sizeof(wav_hdr) == 44, "");
 	std::string outName = wavFile; // raw pcm data without wave header
 	uint32_t wavSize = 1 + size / (parameterDown * 2);
