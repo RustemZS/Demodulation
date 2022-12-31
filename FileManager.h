@@ -9,13 +9,13 @@
 #include "Input.h"
 #include "Wav.h"
 
-// Файл менеджер
+// Р¤Р°Р№Р» РјРµРЅРµРґР¶РµСЂ
 struct FileManager {
 		
-	// Чтение файла
+	// Р§С‚РµРЅРёРµ С„Р°Р№Р»Р°
 	std::vector<Complex<float>> loadFile(const std::string& path);
 
-	// Вывод в файл
+	// Р’С‹РІРѕРґ РІ С„Р°Р№Р»
 	void saveSignal(const std::string& wavFile, const std::vector<float>& signal);
 	
 	static int getSamplingFreq();
@@ -27,10 +27,10 @@ struct FileManager {
 	static std::string getModulation();
 
 	private:
-		static std::string modulation; // Тип модуляции
-		static int samplingFreq;	// Частота дискретизации
-		static int parameterDown; // Параметр передискретизации
-		static uint32_t size; // Размер файла
+		static std::string modulation; // РўРёРї РјРѕРґСѓР»СЏС†РёРё
+		static int samplingFreq;	// Р§Р°СЃС‚РѕС‚Р° РґРёСЃРєСЂРµС‚РёР·Р°С†РёРё
+		static int parameterDown; // РџР°СЂР°РјРµС‚СЂ РїРµСЂРµРґРёСЃРєСЂРµС‚РёР·Р°С†РёРё
+		static uint32_t size; // Р Р°Р·РјРµСЂ С„Р°Р№Р»Р°
 };
 
 #endif
