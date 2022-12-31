@@ -7,7 +7,7 @@
 #include "Timer.h"
 
 struct Input {
-	// Чтение файла с вводными данными
+	// Р§С‚РµРЅРёРµ С„Р°Р№Р»Р° СЃ РІРІРѕРґРЅС‹РјРё РґР°РЅРЅС‹РјРё
 	Input(std::string start);
 
 	static std::string getPath();
@@ -26,12 +26,12 @@ private:
 	std::string data;
 	std::string read;
 	int intToBool;
-	static std::string path; // Путь к файлу
-	static std::string wavFile; // Путь к wav файлу
-	static int frequency; // Граничная частота фильтра
-	static bool needFilter; // Условие включения фильтра
-	static bool filterType;  // Выбор типа фильтра
-	static bool needDownsampling; // Условие включения передискретизации
+	static std::string path; // РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ
+	static std::string wavFile; // РџСѓС‚СЊ Рє wav С„Р°Р№Р»Сѓ
+	static int frequency; // Р“СЂР°РЅРёС‡РЅР°СЏ С‡Р°СЃС‚РѕС‚Р° С„РёР»СЊС‚СЂР°
+	static bool needFilter; // РЈСЃР»РѕРІРёРµ РІРєР»СЋС‡РµРЅРёСЏ С„РёР»СЊС‚СЂР°
+	static bool filterType;  // Р’С‹Р±РѕСЂ С‚РёРїР° С„РёР»СЊС‚СЂР°
+	static bool needDownsampling; // РЈСЃР»РѕРІРёРµ РІРєР»СЋС‡РµРЅРёСЏ РїРµСЂРµРґРёСЃРєСЂРµС‚РёР·Р°С†РёРё
 };
 
 #endif
