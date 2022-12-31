@@ -1,7 +1,7 @@
 #ifndef DOWNSAMPLE_H
 #define DOWNSAMPLE_H
 
-// Передискретизация
+// РџРµСЂРµРґРёСЃРєСЂРµС‚РёР·Р°С†РёСЏ
 inline std::vector<float> downsample(const std::vector<float>& signal);
 
 #endif
