@@ -5,7 +5,7 @@
 #include "FileManager.h"
 #include "Input.h"
 
-// Фильтр скользящего среднего
+// Р¤РёР»СЊС‚СЂ СЃРєРѕР»СЊР·СЏС‰РµРіРѕ СЃСЂРµРґРЅРµРіРѕ
 struct Filter {
 	static std::vector<float> filter(const std::vector<float>& inSignal);
 };
