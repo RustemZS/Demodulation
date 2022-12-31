@@ -1,4 +1,4 @@
-// Подключение файлов
+// РџРѕРґРєР»СЋС‡РµРЅРёРµ С„Р°Р№Р»РѕРІ
 #include "Complex.h"
 #include "Input.h"
 #include "FileManager.h"
@@ -11,29 +11,29 @@ int main()
 {
 	Timer timer;
 	setlocale(LC_ALL, "ru-RU");
-	std::cout << "Начало работы программы" << std::endl;
+	std::cout << "РќР°С‡Р°Р»Рѕ СЂР°Р±РѕС‚С‹ РїСЂРѕРіСЂР°РјРјС‹" << std::endl;
 	FileManager anotherFile;
 
-	// Ввод данных
+	// Р’РІРѕРґ РґР°РЅРЅС‹С…
 	Input inFile("D:/Test work/Input.txt");
 
-	// Считывание отсчётов сигнала из файла
+	// РЎС‡РёС‚С‹РІР°РЅРёРµ РѕС‚СЃС‡С‘С‚РѕРІ СЃРёРіРЅР°Р»Р° РёР· С„Р°Р№Р»Р°
 	std::vector<Complex<float>> signal = anotherFile.loadFile(Input::getPath());
 	std::vector<float> processedSignal(FileManager::getSize() / 2);
 
-	// Демодуляция
+	// Р”РµРјРѕРґСѓР»СЏС†РёСЏ
 	std::unique_ptr<Demodulator> demodulatorPtr(getPtr(FileManager::getModulation()));
 	processedSignal = demodulatorPtr->demodulator(signal);
 
-	// Фильтрация
+	// Р¤РёР»СЊС‚СЂР°С†РёСЏ
 	if (Input::isFilter())
 		processedSignal = Filter::filter(processedSignal);
 	
-	// Передискретизация
+	// РџРµСЂРµРґРёСЃРєСЂРµС‚РёР·Р°С†РёСЏ
 	if (Input::isDownsample())
 		processedSignal = downsample(processedSignal);
 
-	// Вывод сигнала
+	// Р’С‹РІРѕРґ СЃРёРіРЅР°Р»Р°
 	anotherFile.saveSignal(Input::getWavpath(), processedSignal);
 
 	system("pause");
