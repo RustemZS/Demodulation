@@ -5,18 +5,18 @@
 #include "FileManager.h"
 #include "Input.h"
 
-// Интерфейс демодулятора
+// РРЅС‚РµСЂС„РµР№СЃ РґРµРјРѕРґСѓР»СЏС‚РѕСЂР°
 struct Demodulator {
 	virtual std::vector<float> demodulator(const std::vector<Complex<float>>& signal) = 0;
 	virtual ~Demodulator() {}
 };
 
-// Амплитудный демодулятор
+// РђРјРїР»РёС‚СѓРґРЅС‹Р№ РґРµРјРѕРґСѓР»СЏС‚РѕСЂ
 struct DemodulatorAM : Demodulator {
 	std::vector<float> demodulator(const std::vector<Complex<float>>& signal) override
 	{
 		Timer time;
-		std::cout << "Работает DemodulatorAM" << std::endl;
+		std::cout << "Р Р°Р±РѕС‚Р°РµС‚ DemodulatorAM" << std::endl;
 		result.resize(FileManager::getSize() / 2);
 		for (uint32_t i = 0; i < FileManager::getSize() / 2; ++i)
 		{
@@ -40,12 +40,12 @@ private:
 	std::vector<float> result;
 };
 
-// Частотный демодулятор
+// Р§Р°СЃС‚РѕС‚РЅС‹Р№ РґРµРјРѕРґСѓР»СЏС‚РѕСЂ
 struct DemodulatorFM : Demodulator {
 	std::vector<float> demodulator(const std::vector<Complex<float>>& signal) override
 	{
 		Timer time;
-		std::cout << "Работает DemodulatorFM" << std::endl;
+		std::cout << "Р Р°Р±РѕС‚Р°РµС‚ DemodulatorFM" << std::endl;
 		result.resize(FileManager::getSize() / 2);
 
 		for (uint32_t i = 0; i < FileManager::getSize() / 2; ++i)
