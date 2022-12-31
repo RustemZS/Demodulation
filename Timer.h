@@ -15,11 +15,10 @@ public:
 	{
 		stop = std::chrono::high_resolution_clock::now();
 		std::chrono::duration<float> duration = stop - start;
-		std::cout << ":: Âðåìÿ âûïîëíåíèÿ " << duration.count() << " ñ ::" << std::endl;
+		std::cout << ":: Ð’Ñ€ÐµÐ¼Ñ Ð²Ñ‹Ð¿Ð¾Ð»Ð½ÐµÐ½Ð¸Ñ " << duration.count() << " Ñ ::" << std::endl;
 	}
 private:
 	std::chrono::time_point<std::chrono::steady_clock> start, stop;
 };
 
 #endif
-
