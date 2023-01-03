@@ -92,15 +92,17 @@ private:
 
 Demodulator* getPtr(const std::string& modulation)
 {
-	Demodulator* ptr = new DemodulatorAM;
+	Demodulator* ptr1 = new DemodulatorAM;
+	Demodulator* ptr2 = new DemodulatorFM;
 	if (modulation == "AM")
 	{
-		return ptr;
+		delete ptr2;
+		return ptr1;
 	}
 	else if (modulation == "FM")
 	{
-		ptr = new DemodulatorFM;
-		return ptr;
+		delete ptr1;
+		return ptr2;
 	}
 	
 }
