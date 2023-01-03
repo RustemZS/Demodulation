@@ -2,7 +2,7 @@
 #define WAV_H
 
 // PCM to WAV function copied from https://gist.github.com/csukuangfj/c1d1d769606260d436f8674c30662450
-typedef struct WAV_HEADER {
+typedef struct WAVHeader {
     /* RIFF Chunk Descriptor */
     uint8_t riff[4] = { 'R', 'I', 'F', 'F' }; // RIFF Header Magic header
     uint32_t chunkSize = 1;                     // RIFF Chunk Size
