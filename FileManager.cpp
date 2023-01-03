@@ -69,11 +69,8 @@ void FileManager::saveSignal(const std::string& wavFile, const std::vector<float
 	std::cout << "Запись wav файла" << std::endl;
 	static_assert(sizeof(wav_hdr) == 44, "");
 	std::string outName = wavFile; // raw pcm data without wave header
-	uint32_t wavSize = 1 + size / (parameterDown * 2);
-	if (size % (parameterDown * 2) == 0)
-	{
-		wavSize = size / (parameterDown * 2);
-	}
+	uint32_t wavSize = signal.size();
+	
 	std::cout << "file size: " << wavSize << std::endl;
 	
 	wav_hdr wav;

@@ -16,16 +16,18 @@ struct DemodulatorAM : Demodulator {
 	std::vector<float> demodulator(const std::vector<Complex<float>>& signal) override
 	{
 		Timer time;
+		uint32_t copySize = signal.size();
+		
 		std::cout << "Работает DemodulatorAM" << std::endl;
-		result.resize(FileManager::getSize() / 2);
-		for (uint32_t i = 0; i < FileManager::getSize() / 2; ++i)
+		result.resize(copySize);
+		for (uint32_t i = 0; i < copySize; ++i)
 		{
 			sample = signal[i];
 			sum += sample.abs();
 			result[i] = sample.abs();
 		}
-		mean = 2 * sum / FileManager::getSize();
-		for (uint32_t i = 0; i < FileManager::getSize() / 2; ++i)
+		mean = sum / copySize;
+		for (uint32_t i = 0; i < copySize; ++i)
 		{
 			result[i] -= mean;
 		}
@@ -45,10 +47,12 @@ struct DemodulatorFM : Demodulator {
 	std::vector<float> demodulator(const std::vector<Complex<float>>& signal) override
 	{
 		Timer time;
+		uint32_t copySize = signal.size();
+		
 		std::cout << "Работает DemodulatorFM" << std::endl;
-		result.resize(FileManager::getSize() / 2);
+		result.resize(copySize);
 
-		for (uint32_t i = 0; i < FileManager::getSize() / 2; ++i)
+		for (uint32_t i = 0; i < copySize; ++i)
 		{
 			sample = signal[i];
 			phase = sample.arg();

@@ -20,19 +20,22 @@ int main()
 	// Считывание отсчётов сигнала из файла
 	std::vector<Complex<float>> signal = anotherFile.loadFile(Input::getPath());
 	std::vector<float> processedSignal(FileManager::getSize() / 2);
-
+	
+	// Фильтрация AM
+	if (Input::isFilter() && (FileManager::getModulation() == "AM"))
+		signal = Filter<Complex<float>>::filter(signal);
 	// Демодуляция
 	std::unique_ptr<Demodulator> demodulatorPtr(getPtr(FileManager::getModulation()));
 	processedSignal = demodulatorPtr->demodulator(signal);
-
-	// Фильтрация
-	if (Input::isFilter())
-		processedSignal = Filter::filter(processedSignal);
+	
+	// Фильтрация FM
+	if (Input::isFilter() && (FileManager::getModulation() == "FM"))
+		processedSignal = Filter<float>::filter(processedSignal);
 	
 	// Передискретизация
 	if (Input::isDownsample())
-		processedSignal = downsample(processedSignal);
-
+		processedSignal = Downsampler<float>::downsample(processedSignal);
+	
 	// Вывод сигнала
 	anotherFile.saveSignal(Input::getWavpath(), processedSignal);
 
