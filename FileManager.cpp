@@ -67,19 +67,20 @@ void FileManager::saveSignal(const std::string& wavFile, const std::vector<float
 {
 	Timer timer;
 	std::cout << "Запись wav файла" << std::endl;
-	static_assert(sizeof(wav_hdr) == 44, "");
+	static_assert(sizeof(wavHdr) == 44, "");
 	std::string outName = wavFile; // raw pcm data without wave header
 	uint32_t wavSize = signal.size();
 	
 	std::cout << "file size: " << wavSize << std::endl;
-	
-	wav_hdr wav;
-	wav.SamplesPerSec = samplingFreq;
+
+	wavHdr wav;
+	wav.samplesPerSec = samplingFreq;
 	wav.bytesPerSec = 2 * samplingFreq;
-	wav.ChunkSize = wavSize + sizeof(wav_hdr) - 8;
-	wav.Subchunk2Size = wavSize;
+	wav.chunkSize = wavSize + sizeof(wavHdr) - 8;
+	wav.subchunk2Size = wavSize;
 
 	std::ofstream out(outName, std::ios::binary);
+
 	out.write(reinterpret_cast<const char*>(&wav), sizeof(wav));
 	int16_t outSample;
 	for (uint32_t i = 0; i < wavSize; ++i) {
