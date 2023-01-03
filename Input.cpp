@@ -7,7 +7,7 @@ Input::Input(std::string start)
 	in.open(start);
 	if (!in.is_open())
 	{
-		std::cout << "Ôàéë íå îòêğûëñÿ" << std::endl;
+		std::cout << "Ğ¤Ğ°Ğ¹Ğ» Ğ½Ğµ Ğ¾Ñ‚ĞºÑ€Ñ‹Ğ»ÑÑ" << std::endl;
 		exit(1);
 	}
 	else
